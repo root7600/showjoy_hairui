@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.showjoy.hairui.dao.TradeOrderItemMapper">
+  <resultMap id="BaseResultMap" type="com.showjoy.hairui.model.TradeOrderItem">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="orderNumber" jdbcType="BIGINT" property="ordernumber" />
+    <result column="skuId" jdbcType="INTEGER" property="skuid" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="productTiltle" jdbcType="VARCHAR" property="producttiltle" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, orderNumber, skuId, price, productTiltle, gmt_modified, gmt_create
+  </sql>
+  <select id="selectByExample" parameterType="com.showjoy.hairui.model.TradeOrderItemExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from `trade_order_item`
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from `trade_order_item`
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from `trade_order_item`
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.showjoy.hairui.model.TradeOrderItemExample">
+    delete from `trade_order_item`
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.showjoy.hairui.model.TradeOrderItem">
+    insert into `trade_order_item` (id, orderNumber, skuId, 
+      price, productTiltle, gmt_modified, 
+      gmt_create)
+    values (#{id,jdbcType=INTEGER}, #{ordernumber,jdbcType=BIGINT}, #{skuid,jdbcType=INTEGER}, 
+      #{price,jdbcType=DECIMAL}, #{producttiltle,jdbcType=VARCHAR}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{gmtCreate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.showjoy.hairui.model.TradeOrderItem">
+    insert into `trade_order_item`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ordernumber != null">
+        orderNumber,
+      </if>
+      <if test="skuid != null">
+        skuId,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="producttiltle != null">
+        productTiltle,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ordernumber != null">
+        #{ordernumber,jdbcType=BIGINT},
+      </if>
+      <if test="skuid != null">
+        #{skuid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="producttiltle != null">
+        #{producttiltle,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.showjoy.hairui.model.TradeOrderItemExample" resultType="java.lang.Long">
+    select count(*) from `trade_order_item`
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update `trade_order_item`
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordernumber != null">
+        orderNumber = #{record.ordernumber,jdbcType=BIGINT},
+      </if>
+      <if test="record.skuid != null">
+        skuId = #{record.skuid,jdbcType=INTEGER},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.producttiltle != null">
+        productTiltle = #{record.producttiltle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gmtModified != null">
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update `trade_order_item`
+    set id = #{record.id,jdbcType=INTEGER},
+      orderNumber = #{record.ordernumber,jdbcType=BIGINT},
+      skuId = #{record.skuid,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=DECIMAL},
+      productTiltle = #{record.producttiltle,jdbcType=VARCHAR},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.showjoy.hairui.model.TradeOrderItem">
+    update `trade_order_item`
+    <set>
+      <if test="ordernumber != null">
+        orderNumber = #{ordernumber,jdbcType=BIGINT},
+      </if>
+      <if test="skuid != null">
+        skuId = #{skuid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="producttiltle != null">
+        productTiltle = #{producttiltle,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.showjoy.hairui.model.TradeOrderItem">
+    update `trade_order_item`
+    set orderNumber = #{ordernumber,jdbcType=BIGINT},
+      skuId = #{skuid,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      productTiltle = #{producttiltle,jdbcType=VARCHAR},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
