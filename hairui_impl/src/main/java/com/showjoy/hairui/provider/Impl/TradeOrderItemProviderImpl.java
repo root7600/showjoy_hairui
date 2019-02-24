@@ -1,10 +1,10 @@
-package com.showjoy.provider.impl;
+package com.showjoy.hairui.provider.Impl;
 
 import com.showjoy.hairui.dao.TradeOrderItemMapper;
 import com.showjoy.hairui.model.TradeOrderItem;
 import com.showjoy.hairui.model.TradeOrderItemExample;
-import com.showjoy.provider.TradeOrderItemProvider;
-import com.showjoy.result.TradeOrderItemDto;
+import com.showjoy.hairui.provider.TradeOrderItemProvider;
+import com.showjoy.hairui.result.TradeOrderItemDto;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 

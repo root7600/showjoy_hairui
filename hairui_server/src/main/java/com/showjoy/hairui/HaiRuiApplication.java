@@ -5,12 +5,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * @Author: hairui
  * @Date: 2019/2/17 10:06
  */
+
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@ComponentScan(basePackages = { "com.showjoy.hairui"})
+@EnableAsync
 public class HaiRuiApplication {
 
     private static Logger logger = LoggerFactory.getLogger(HaiRuiApplication.class);

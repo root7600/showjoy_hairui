@@ -1,6 +1,6 @@
-package com.showjoy.provider;
+package com.showjoy.hairui.provider;
 
-import com.showjoy.result.TradeOrderItemDto;
+import com.showjoy.hairui.result.TradeOrderItemDto;
 
 /**
  * @Author: hairui

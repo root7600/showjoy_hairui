@@ -1,4 +1,4 @@
-package com.showjoy.result;
+package com.showjoy.hairui.result;
 
 import java.io.Serializable;
 
