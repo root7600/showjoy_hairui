@@ -22,10 +22,5 @@
             <artifactId>hairui_mapper</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>groupId</groupId>
-            <artifactId>hairui_api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-       </dependency>
     </dependencies>
 </project>
